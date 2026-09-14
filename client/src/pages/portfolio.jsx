@@ -43,7 +43,7 @@ const evts = [
   },
   {
     _id : 5,
-    title : "Wedding",
+    title : "Conference",
     location : "Osun State",
     year : 2026,
     category : "Wedding",
