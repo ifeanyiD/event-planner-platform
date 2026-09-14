@@ -1,19 +1,65 @@
 import { useEffect, useState } from "react";
 import "../styles/Portfolio.scss";
+import A from "../assets/a.jpg";
+import B from "../assets/b.jpg";
+import C from "../assets/c.jpg";
+import D from "../assets/d.jpg";
+import E from "../assets/conference.jpg";
 import API from "../api/axios";
 
 const categories = ["All", "Wedding", "Corporate", "Birthday", "Conference", "Private"];
-
+const evts = [
+  {
+    _id : 1,
+    title : "Wedding",
+    location : "Lagos State",
+    year : 2025,
+    category : "Wedding",
+    img : [A]
+  },
+  {
+    _id : 2,
+    title : "Corporate",
+    location : "Lagos State",
+    year : 2025,
+    category : "Corporate",
+    img : [B]
+  },
+  {
+    _id : 3,
+    title : "Birthday",
+    location : "Abuja",
+    year : 2026,
+    category : "Birthday",
+    img : [C]
+  },
+  {
+    _id : 4,
+    title : "Wedding",
+    location : "Lagos State",
+    year : 2025,
+    category : "Private",
+    img : [D]
+  },
+  {
+    _id : 5,
+    title : "Wedding",
+    location : "Osun State",
+    year : 2026,
+    category : "Wedding",
+    img : [E]
+  },
+]
 export default function Portfolio() {
-  const [events, setEvents] = useState([]);
+  const [events, setEvents] = useState(evts);
   const [filter, setFilter] = useState("All");
 
-  useEffect(() => {
-    API.get("/api/events").then(res => {
-        setEvents(res.data);
-        console.log("coming from contact", res)
-    });
-  }, []);
+  // useEffect(() => {
+  //   API.get("/api/events").then(res => {
+  //       setEvents(res.data);
+  //       console.log("coming from contact", res)
+  //   });
+  // }, []);
 
   const filteredEvents =
     filter === "All"
@@ -46,7 +92,7 @@ export default function Portfolio() {
       <div className="portfolio__grid">
         {filteredEvents.map(event => (
           <div key={event._id} className="card">
-            <img src={event.images[0]} alt={event.title} />
+            <img src={event.img[0]} alt={event.title} />
             <div className="card__overlay">
               <h3>{event.title}</h3>
               <p>{event.category} | {event.location} | {event.year}</p>

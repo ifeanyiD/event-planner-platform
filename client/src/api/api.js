@@ -3,6 +3,8 @@ import API from "./axios";
 
 export const authRefresher = API.get("/api/auth/refresh")
 
+//EVENTS
+export const getEvents = () => API.get("/api/public/events");
 //CONTACT
 export const sendMessage =  (data) => API.post("/api/messages", data);
 

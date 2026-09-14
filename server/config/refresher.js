@@ -21,12 +21,15 @@ export const refreshTokenHandler = async (req, res) => {
     
     const refreshToken =  generateRefreshToken(user)
 
+    user.refreshToken = refreshToken
+    await user.save();
+
       // Set refresh cookie again
     res.cookie("jwt", refreshToken, {
         httpOnly: true,
-        sameSite: "Lax",
+        sameSite: "None",
         secure: true, // true in production
-        maxAge: 24 * 60 * 60 * 1000
+        maxAge: 7 * 24 * 60 * 60 * 1000
     });
     
     return res.json({

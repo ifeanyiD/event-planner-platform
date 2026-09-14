@@ -1,5 +1,5 @@
 .skeleton {
-  background: #e5e7eb;
+  background: white;
   height: 300px;
   border-radius: 12px;
   animation: pulse 1.5s infinite;
@@ -10,5 +10,3 @@
   50% { opacity: 1; }
   100% { opacity: .6; }
 }
-
-// {loading && Array(6).fill().map((_,i) => <div key={i} className="skeleton"></div>)}

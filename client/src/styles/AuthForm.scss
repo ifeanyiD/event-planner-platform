@@ -3,7 +3,8 @@
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: linear-gradient(135deg, #e0f7fa, #fce4ec);
+  background: linear-gradient(135deg, #e0f7fa, rgb(227, 232, 238));
+  background-size: 5px 5px;
   perspective: 1200px;
 }
 
@@ -13,7 +14,7 @@
   transform-style: preserve-3d;
   max-width: 400px;
   width: 100%;
-  max-height: 500px;
+  max-height: 400px;
   height: 50vmax;
 }
 
@@ -53,6 +54,7 @@
 }
 .front {
   z-index: 2;
+  gap: 20px;
 }
 
 .back {

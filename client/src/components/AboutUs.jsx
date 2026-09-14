@@ -22,7 +22,16 @@ const AboutUs = () => {
 
       <section>
         <div className="container">
-          About us
+          <h3>We Turn Moments Into Memories</h3>
+          <p> We are a passionate event planning team dedicated to creating memorable experiences that are beautifully planned, well-organized, and tailored to every client. From intimate celebrations to grand occasions, we take care of the details so you can focus on enjoying your special moment. Our services cover event planning, coordination, decoration, vendor management, and on-the-day support.
+            We believe every event is unique. That is why we work closely with our clients to understand their vision, preferences, and expectations, turning their ideas into an event they can truly be proud of.
+          </p>
+          <h3>Why Choose Us?</h3>
+          <h4>Professional Planning</h4>
+          <p>We carefully organize every aspect of your event from concept to execution.</p>
+          <h4>Attention to Detail</h4>
+          <p>We pay attention to the small details that make a big difference.</p>
+          
         </div>
       </section>
 

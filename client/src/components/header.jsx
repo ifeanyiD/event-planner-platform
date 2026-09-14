@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom';
-import  {useAuth} from "../hooks/useAuth"
+import  {useAuth} from "../hooks/useAuth";
+import { CgEventbrite } from "react-icons/cg";
 import "../styles/header.scss";
 import MobileMenu from './mobileMenu';
 
@@ -15,7 +16,9 @@ export default function Header() {
   return (
     <header>
         <div className='container'>
-            <NavLink className={active} to={"/"}>Logo</NavLink>
+            <NavLink className={active} to={"/"}>
+              <CgEventbrite fontSize={30}/>
+            </NavLink>
             <ul className="menu">
                 <li><NavLink  className={active} to="aboutUs">About us</NavLink></li>
                 <li><NavLink  className={active} to="gallery">Portfolio</NavLink></li>

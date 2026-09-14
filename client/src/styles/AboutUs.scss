@@ -37,6 +37,16 @@
   }
 }
 
+.container{
+  display: grid;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  p{
+    line-height: 1.5;
+    color: grey;
+  }
+}
 /* TEAM */
 
 .about__team {

@@ -3,11 +3,16 @@ import "../styles/AuthForm.scss";
 import API from "../api/axios";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
+import toast from "react-hot-toast";
 
 const AuthForm = () => {
   const [isLogin, setIsLogin] = useState(true);
   const {setUser, setAccessToken} = useAuth();
   const navigate = useNavigate();
+  const [loading, setloading] = useState({
+    login : false,
+    registration : false 
+  });
 
   const [Login, setLogin] = useState({
     email : "",
@@ -23,15 +28,19 @@ const AuthForm = () => {
   const handleLogin = async (e) =>{
     try {
       e.preventDefault();
+      setloading({...loading, login : true})
       const {data} = await API.post("/api/auth/login", {
         email : Login.email,
         password : Login.pwd
       });
       setAccessToken(data.accessToken);
       setUser(data.user);
+      toast.success("Successfully login");
       navigate("/")
     } catch (error) {
-      console.log(error)
+      toast.error(error.response.data.message)
+    }finally{
+      setloading({...loading, login : false})
     }
   }
   const onchangeLogin = e => {
@@ -43,13 +52,16 @@ const AuthForm = () => {
   const handleCreateAccount = async (e)=>{
     e.preventDefault();
     const {email, pwd, name} = signUp;
+    setloading({...loading, registration : true})
     try {
       const res = await API.put("/api/auth/register", {email, password : pwd, name});
-      console.log(res);
+      toast.success("Registered!!!");
       
     } catch (error) {
-      console.log(error)
-    }    
+      toast.error(error.response.data.message)
+    } finally{
+      setloading({...loading, registration : false})
+    }   
   }
 
   const toggleForm = () => setIsLogin(!isLogin);
@@ -65,7 +77,9 @@ const AuthForm = () => {
             <form onSubmit={handleLogin}>
               <input type="email" placeholder="Email" required name="email" onChange={onchangeLogin}/>
               <input type="password" placeholder="Password" required  name="pwd" onChange={onchangeLogin}/>
-              <button type="submit">Login</button>
+              <button type="submit">
+                {loading.login ? "loading..." : "Login"}
+              </button>
             </form>
             <p className="toggle-text">
               Don't have an account? 
@@ -81,7 +95,9 @@ const AuthForm = () => {
               <input type="email" placeholder="Email" required  name="email" onChange={onchangeRegister}/>
               <input type="password" placeholder="Password" required  name="pwd" onChange={onchangeRegister}/>
               <input type="password" placeholder="Confirm Password" required name="c_pwd" onChange={onchangeRegister}/>
-              <button type="submit">Sign Up</button>
+              <button type="submit">
+                {loading.registration ? "loading..." : "Sign Up"}
+              </button>
             </form>
             <p className="toggle-text">
               Already have an account?

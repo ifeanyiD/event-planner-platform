@@ -120,7 +120,7 @@ export default function Root() {
               <div key={idx} className= 'imgs'>
                 <img src={i}/>
                 <div className='img_opt'>
-                  <label>Image title</label>
+                  <label>Event</label>
                   <div>
                     <span onClick={()=>setSelectedImg(i)}><GrFormView/></span>
                     <span><IoLinkSharp/></span>
@@ -141,16 +141,16 @@ export default function Root() {
           <h2>What our <span>customer say</span></h2>
           <div className='scene'>
             <div className='cube' style={{transform:`rotateY(${rotation}deg)`}}>
-              <div class="face front">Testimony 1</div>
-              <div class="face right">Testimony 2</div>
-              <div class="face back">Testimony 3</div>
-              <div class="face left">Testimony 4</div>
+              <div className="face front">Testimony 1</div>
+              <div className="face right">Testimony 2</div>
+              <div className="face back">Testimony 3</div>
+              <div className="face left">Testimony 4</div>
             </div>
           </div>
           <div className='t_btn'>
             <button onClick={nextTestimony} >Next</button>
             {
-              arr.map((i, idx)=> <span key={i} style={index === idx ? {backgroundColor : "blue"} : {backgroundColor : "inherit"}}></span>)
+              arr.map((_, idx)=> <span key={idx} style={index === idx ? {backgroundColor : "blue"} : {backgroundColor : "inherit"}}></span>)
             }
           </div>
         </div>
@@ -167,23 +167,7 @@ export default function Root() {
         </button>
       </div>
     </section>
-    
-    {/* FAQ */}
-      <section className='faqs'>
-        <div className='container'>
-          <h2>FAQS</h2>
-          <div>
-             <details>
-                <summary>What is Chizzy event?</summary>
-                <p>It's ....</p>
-             </details>
-             <details>
-                <summary>What is Chizzy event?</summary>
-                <p>It's ....</p>
-             </details>
-          </div>
-        </div>
-      </section>
+
       {selectedImg &&
         <Modal setSelectedImg={setSelectedImg}>
           <img src={selectedImg} alt="Preview" />

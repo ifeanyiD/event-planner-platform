@@ -17,6 +17,7 @@ import eventRoutes from "./routes/eventRoute.js";
 import statsRoutes from "./routes/dashboardRoutes.js";
 import uploader  from "./routes/uploadRoute.js";
 import users from "./routes/usersRoute.js";
+import publicRoutes from "./routes/publicRoutes.js";
 import { roleCheck } from "./middleware/roleCheck.js";
 import dns from  "dns";
 import allowedOrigins from "./config/allowedOrigins.js";
@@ -60,13 +61,15 @@ mongoose.connect(process.env.MONGO_URI)
 //Login, Register, Refresher
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", router);
+app.use("/api/public", publicRoutes);
+
 // Protected Route
-app.use(verifyToken, adminOnly);
+app.use(verifyToken);
 
 // ROUTES
-app.use("/api/users", users);
-app.use("/api/stats", statsRoutes);
-app.use("/api/messages", authRouter);
+app.use("/api/users", adminOnly, users);
+app.use("/api/stats", adminOnly, statsRoutes);
+app.use("/api/messages", adminOnly, authRouter);
 app.use("/api/image", roleCheck("admin", "vendor"), uploader);
 
 app.use("/api/events", eventRoutes)

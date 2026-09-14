@@ -9,7 +9,7 @@ const Footer = () => {
 
         {/* COMPANY INFO */}
         <div className="footer__section">
-          <h3>EventMaster</h3>
+          <h3>Event_</h3>
           <p>
             We create unforgettable events from weddings to corporate
             celebrations. Our mission is to turn your vision into reality.
@@ -44,7 +44,7 @@ const Footer = () => {
           <h4>Contact</h4>
 
           <p><FaPhone /> +234 913 195 6559</p>
-          <p><FaEnvelope /> info@eventmaster.com</p>
+          <p><FaEnvelope /> info@event_.com</p>
           <p><FaMapMarkerAlt /> Lagos, Nigeria</p>
 
           <div className="footer__socials">
