@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { useAuth } from './useAuth';
 import { authRefresher } from '../api/api';
 
 export default function useRefresherToken() {
     const {setUser, setAccessToken, setLoading} = useAuth();
-    const refresher = async ()=>{
+    const refresher = useCallback(async ()=>{
        try {
           const response = await authRefresher
           setUser(response.data.user);
@@ -19,7 +19,7 @@ export default function useRefresherToken() {
        finally{
          setLoading(false)
        }
-  }
+  }, [setUser, setAccessToken, setLoading])
 
   return refresher
 }

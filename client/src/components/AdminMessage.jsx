@@ -58,7 +58,7 @@ const AdminMessages = () => {
 
   const handleDelete = async (msg) => {
     try {
-      const {data} = await axios.delete(`/api/messages/${msg._id}`)
+      await axios.delete(`/api/messages/${msg._id}`)
       setMessages(prev => prev.filter(m => m._id !== msg._id));
       if (selected?._id === msg._id) setSelected(null);
     } catch (error) {

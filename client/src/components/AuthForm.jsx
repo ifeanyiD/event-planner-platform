@@ -54,7 +54,7 @@ const AuthForm = () => {
     const {email, pwd, name} = signUp;
     setloading({...loading, registration : true})
     try {
-      const res = await API.put("/api/auth/register", {email, password : pwd, name});
+      await API.put("/api/auth/register", {email, password : pwd, name});
       toast.success("Registered!!!");
       
     } catch (error) {

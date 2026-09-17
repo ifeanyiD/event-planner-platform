@@ -10,20 +10,18 @@ export default function PersistedRoute() {
 
     useEffect(() => {
         const verifyRefresh = async () => {
-        try {
             if (!user || !accessToken) {
-             await refresh(); // refresh sets auth internally
+                await refresh(); // refresh sets auth internally
+            }else {
+                setLoading(false)
             }
-        } catch {
-            setUser(null); // logout
-            setAccessToken(null);
-        } finally {
-            setLoading(false);
-        }
+        
         };
-
+        
         verifyRefresh();
-    }, []);
+
+    }, 
+    [user, accessToken, refresh, setUser, setAccessToken]);
 
     if (isLoading) return <p>Loading session...</p>; // ensures ProtectedRoute mounts **after** refresh
     return <Outlet />; // will mount ProtectedRoute here
