@@ -11,7 +11,6 @@ export default function useRefresherToken() {
           setAccessToken(response.data.accessToken)
           return response.data.accessToken
        } catch (err) {
-          console.log(err)
           setUser(null);
           setAccessToken(null)
           return null
