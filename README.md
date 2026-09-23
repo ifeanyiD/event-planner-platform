@@ -166,6 +166,19 @@ The dashboard communicates with the backend through protected API endpoints.
 
 ---
 
+---
+
+## Screenshots
+
+<p align="center">
+  <img src="./docs/screenshots/event_menu.png" width="30%" alt="Admin_Dashboard">
+  <img src="./docs/screenshots/events.png" width="30%" alt="Portfolio">
+  <img src="./docs/screenshots/messages.png" width="30%" alt="Admin_Real-time_Message">
+  <img src="./docs/screenshots/messages1.png" width="30%" alt="Message">
+  <img src="./docs/screenshots/messages2.png" width="30%" alt="Message">
+  <img src="./docs/screenshots/users.png" width="30%" alt="Users">
+</p>
+
 ## Tech Stack
 
 ### Frontend
