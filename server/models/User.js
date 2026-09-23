@@ -1,4 +1,5 @@
-import mongoose from "mongoose"
+import mongoose from "mongoose";
+import hashPassword from "../middleware/hashPassword.js";
 
 const userSchema = new mongoose.Schema({
   name: {
@@ -22,5 +23,7 @@ const userSchema = new mongoose.Schema({
   refreshToken : String
   
 }, { timestamps: true })
+
+userSchema.pre("save", hashPassword);
 
 export default mongoose.model("User", userSchema)
